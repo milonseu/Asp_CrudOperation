@@ -1,0 +1,32 @@
+﻿@model EmployeeCrudProject.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit Employees";
+}
+
+<h1>Edit Employee</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <label>Name</label>
+    <input type="text" asp-for="EmpName" required />
+    <span asp-validation-for="EmpName" style="color:red"></span>
+
+    <label>Email</label>
+    <input type="email" asp-for="Email" required />
+    <span asp-validation-for="Email" style="color:red"></span>
+
+    <label>Phone Number</label>
+    <input type="text" asp-for="PhoneNumber" />
+
+    <button type="submit">Update Employee</button>
+</form>
+
+<a href="@Url.Action("Index")">Back to Employee List</a>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

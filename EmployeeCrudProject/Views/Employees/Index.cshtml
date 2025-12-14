@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EmployeeCrudProject.Models.Employee>
+@{
+    ViewData["Title"] = "Employee Page";
+}
+
+<h1>Employee Page</h1>
+
+<!-- Add New Employee Form -->
+<h3>Add New Employee</h3>
+<form asp-action="Create" method="post">
+    <input type="text" name="EmpName" placeholder="Employee Name" required />
+    <input type="email" name="Email" placeholder="Email" required />
+    <input type="text" name="PhoneNumber" placeholder="Phone Number" />
+    <button type="submit">Add Employee</button>
+</form>
+
+<hr />
+
+<!-- Employee Table -->
+<h3>Employee List</h3>
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var emp in Model)
+        {
+            <tr>
+                <td>@emp.Id</td>
+                <td>@emp.EmpName</td>
+                <td>@emp.Email</td>
+                <td>@emp.PhoneNumber</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Employees", new { id = emp.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Employees", new { id = emp.Id })" onclick="return confirm('Are you sure?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

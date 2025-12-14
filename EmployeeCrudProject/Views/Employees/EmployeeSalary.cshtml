@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<EmployeeCrudProject.Models.EmployeeSalaryVM>
+@{
+    ViewData["Title"] = "Employee Salary";
+}
+
+<h2>Employee Salary List</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Employee Name</th>
+            <th>Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.EmployeeName</td>
+                <td>@item.Salary</td>
+            </tr>
+        }
+    </tbody>
+</table>
